@@ -1,11 +1,14 @@
-import Box from "./Box";
-import Circle from "./Circle";
+import Button from "./Button";
 
 function App() {
   return (
     <>
-      <Box text="네모짱" />
-      <Circle text="동글짱" />
+      <Button backgroundColor="primary" borderRadius="hard" />
+      <Button backgroundColor="secondary" borderRadius="hard" />
+      <Button backgroundColor="primary" borderRadius="smooth" />
+      <Button backgroundColor="secondary" borderRadius="circle" />
+      <Button backgroundColor="secondary" borderRadius="circle" />
+      <Button backgroundColor="secondary" borderRadius="smooth" />
     </>
   );
 }

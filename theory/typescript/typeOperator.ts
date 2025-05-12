@@ -7,7 +7,7 @@ const b2: Icecream = {
   icecream: "아이스크림",
 };
 
-// Person 정의 이름, 나이
+// intersection type (&) [교집합]
 type Person = { name: string; age: number };
 type Colleger = { major: string; grade: number };
 type Worker_ = { position: string; wage: number };
@@ -21,3 +21,16 @@ const taejin: ChungChuen = {
   position: "알바생",
   wage: 10000,
 };
+
+type Dessert = "cookie" | "icecream" | "coffee";
+type A = Exclude<Dessert, "cookie">;
+type B = Extract<Dessert, "icecream">;
+const test50: A = "icecream";
+const test51: B = "icecream";
+
+type Coffee = { name: string; price: number; kcal?: number };
+
+// 함수타입 알리아스
+type Hello = (name: string) => string;
+
+const sayHello: Hello = (name) => `${name} 안녕!`;
