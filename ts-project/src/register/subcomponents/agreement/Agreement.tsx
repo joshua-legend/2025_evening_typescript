@@ -1,7 +1,7 @@
-import Checker, { CheckerProps } from "./Checker";
-import Instruction, { InstructionProps } from "./Instruction";
+import Checker, { CheckerProps } from "./checkers/Checker";
+import Instruction, { InstructionComponetProps } from "./instructions/Instruction";
 
-type AgreementProps = InstructionProps & CheckerProps;
+export type AgreementProps = InstructionComponetProps & CheckerProps;
 
 const Agreement = (props: AgreementProps) => {
   return (
