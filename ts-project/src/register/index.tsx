@@ -16,6 +16,7 @@ const Register = () => {
     { isMandantory: true, isChecked: false, instruction: "정체성 어쩌구 저쩌구", required: "mandantory", handleClick: () => handleClickTest(4) },
     { isMandantory: false, isChecked: false, instruction: "냥냥이 정권 진출", required: "option", handleClick: () => handleClickTest(5) },
     { isMandantory: true, isChecked: false, instruction: "댕댕이 복지 혜택", required: "mandantory", handleClick: () => handleClickTest(6) },
+    { isMandantory: true, isChecked: false, instruction: "분좋카 나들이 쿠폰이용", required: "mandantory", handleClick: () => handleClickTest(7) },
   ]);
 
   const handleClickAll = () =>
@@ -38,9 +39,10 @@ const Register = () => {
       {agreements.map((v, i) => (
         <Agreement key={i} {...v} />
       ))}
-      <Next isPass={agreements.every((v) => (v.isMandantory ? v.isChecked : true))} />
+      <Next isPass={agreements.filter((v) => v.isMandantory).every((v) => v.isChecked)} />
     </div>
   );
 };
 
 export default Register;
+// commodity
