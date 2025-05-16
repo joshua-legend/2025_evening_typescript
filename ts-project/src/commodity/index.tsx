@@ -1,14 +1,23 @@
-import React from "react";
-import NationSelect from "./subcommponents/NationSelect";
-import TypeSelect from "./subcommponents/TypeSelect";
+"use client";
+
+import React, { useState } from "react";
+import NationSelect, { Nation } from "./subcommponents/NationSelect";
+import TypeSelect, { TypeOptions } from "./subcommponents/TypeSelect";
 
 const Commodity = () => {
-  const data = [{ nation: "일본", type: ["패키지", "자유"] }];
+  const [data, setData] = useState<{ nation: Nation; type: TypeOptions }[]>([
+    { nation: "japan", type: ["package", "free"] },
+    { nation: "southeastAsia", type: ["package", "free"] },
+    { nation: "taiwanHongKong", type: ["package", "free"] },
+    { nation: "china", type: ["package"] },
+    { nation: "oceania", type: ["package"] },
+    { nation: "europe", type: ["package"] },
+  ]);
 
   return (
     <>
-      <NationSelect />
-      <TypeSelect />
+      <NationSelect data={data.map((v) => v.nation)} />
+      <TypeSelect data={data.map((v) => v.type)} />
     </>
   );
 };

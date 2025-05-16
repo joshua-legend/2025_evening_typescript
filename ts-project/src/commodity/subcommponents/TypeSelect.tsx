@@ -1,4 +1,14 @@
-const TypeSelect = () => {
+export type TypeOptions = ["package"] | ["package", "free"];
+type TypeSelectProps = {
+  data: TypeOptions;
+};
+
+const TypeSelect = ({ data }: TypeSelectProps) => {
+  const obj = {
+    package: "패키지",
+    free: "자유",
+  };
+
   return (
     <div className="relative inline-block w-52">
       <select
@@ -12,8 +22,11 @@ const TypeSelect = () => {
           cursor-pointer
         "
       >
-        <option value="package">패키지</option>
-        <option value="free">자유</option>
+        {data.map((v, i) => (
+          <option key={i} value={v}>
+            {obj[v]}
+          </option>
+        ))}
       </select>
     </div>
   );

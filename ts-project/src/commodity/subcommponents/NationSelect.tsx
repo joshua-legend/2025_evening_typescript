@@ -1,4 +1,18 @@
-const NationSelect = () => {
+export type Nation = "japan" | "southeastAsia" | "taiwanHongKong" | "china" | "oceania" | "europe";
+type NationSelectProps = {
+  data: Nation[];
+};
+
+const NationSelect = ({ data }: NationSelectProps) => {
+  const obj: { [name in Nation]: string } = {
+    japan: "일본",
+    southeastAsia: "동남아",
+    taiwanHongKong: "대만/홍콩",
+    china: "중국",
+    europe: "유럽",
+    oceania: "대양주",
+  };
+
   return (
     <div className="relative inline-block w-52">
       <select
@@ -12,8 +26,11 @@ const NationSelect = () => {
           cursor-pointer
         "
       >
-        <option value="meat">고기</option>
-        <option value="candy">사탕</option>
+        {data.map((v, i) => (
+          <option key={i} value={v}>
+            {obj[v]}
+          </option>
+        ))}
       </select>
     </div>
   );
