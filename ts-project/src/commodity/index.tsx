@@ -1,23 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import NationSelect, { Nation } from "./subcommponents/NationSelect";
 import TypeSelect, { TypeOptions } from "./subcommponents/TypeSelect";
+import Product from "./subcommponents/products/Product";
+import { serverData } from "./data/server.data";
 
 const Commodity = () => {
-  const [data, setData] = useState<{ nation: Nation; type: TypeOptions }[]>([
-    { nation: "japan", type: ["package", "free"] },
-    { nation: "southeastAsia", type: ["package", "free"] },
-    { nation: "taiwanHongKong", type: ["package", "free"] },
-    { nation: "china", type: ["package"] },
-    { nation: "oceania", type: ["package"] },
-    { nation: "europe", type: ["package"] },
-  ]);
+  const [selected, setSelected] = useState<string>("japan");
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => setSelected(e.target.value);
 
   return (
     <>
-      <NationSelect data={data.map((v) => v.nation)} />
-      <TypeSelect data={data.map((v) => v.type)} />
+      <NationSelect selected={selected} handleChange={handleChange} nations={serverData.map((v) => v.nation)} />
+      <TypeSelect type={serverData.filter((v) => v.nation == selected)[0].type} />
+      <Product nation={selected} />
     </>
   );
 };

@@ -1,9 +1,9 @@
 export type TypeOptions = ["package"] | ["package", "free"];
 type TypeSelectProps = {
-  data: TypeOptions;
+  type: TypeOptions;
 };
 
-const TypeSelect = ({ data }: TypeSelectProps) => {
+const TypeSelect = ({ type }: TypeSelectProps) => {
   const obj = {
     package: "패키지",
     free: "자유",
@@ -22,7 +22,7 @@ const TypeSelect = ({ data }: TypeSelectProps) => {
           cursor-pointer
         "
       >
-        {data.map((v, i) => (
+        {type.map((v, i) => (
           <option key={i} value={v}>
             {obj[v]}
           </option>

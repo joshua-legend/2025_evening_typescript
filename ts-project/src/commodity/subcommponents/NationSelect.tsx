@@ -1,9 +1,13 @@
+import { ChangeEvent } from "react";
+
 export type Nation = "japan" | "southeastAsia" | "taiwanHongKong" | "china" | "oceania" | "europe";
 type NationSelectProps = {
-  data: Nation[];
+  selected: string;
+  nations: Nation[];
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const NationSelect = ({ data }: NationSelectProps) => {
+const NationSelect = ({ selected, nations, handleChange }: NationSelectProps) => {
   const obj: { [name in Nation]: string } = {
     japan: "일본",
     southeastAsia: "동남아",
@@ -25,8 +29,10 @@ const NationSelect = ({ data }: NationSelectProps) => {
           focus:outline-none 
           cursor-pointer
         "
+        value={selected}
+        onChange={(e) => handleChange(e)}
       >
-        {data.map((v, i) => (
+        {nations.map((v, i) => (
           <option key={i} value={v}>
             {obj[v]}
           </option>
